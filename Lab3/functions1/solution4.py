@@ -13,5 +13,5 @@ def filter_prime(*mylist):
     return plist
 s = input()
 mylist = s.split()
-print(primecheck(*mylist))
+print(filter_prime(*mylist))
 
