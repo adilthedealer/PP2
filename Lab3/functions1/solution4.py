@@ -1,5 +1,5 @@
 from math import sqrt
-def primecheck(*mylist):
+def filter_prime(*mylist):
     plist = []
     for i in range(len(mylist)):
         num = int(mylist[i])
