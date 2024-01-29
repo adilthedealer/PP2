@@ -18,7 +18,7 @@ movies = [
 s = input()
 for x in movies:
     if x["name"] == s:
-        if x["imdb"] >= 7.5:
+        if x["imdb"] > 5.5:
             print(True)
             exit()
         else:
