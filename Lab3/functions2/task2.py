@@ -15,9 +15,12 @@ movies = [
     {"name": "Exam", "imdb": 4.2, "category": "Thriller"},
     {"name": "We Two", "imdb": 7.2, "category": "Romance"},
 ]
-mylist = list()
-for x in movies:
-    if x["imdb"] >= 5.5:
-        mylist.append(x["name"])
-for i in mylist:
+def listofnames(movies):
+    mylist = list()
+    for x in movies:
+        if x["imdb"] > 5.5:
+            mylist.append(x["name"])
+    return mylist
+mlst = listofnames(movies)
+for i in mlst:
     print(i)
