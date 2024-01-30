@@ -1,2 +1,2 @@
 class Shape:
-    
+    class 
