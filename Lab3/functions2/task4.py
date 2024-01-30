@@ -15,8 +15,11 @@ movies = [
     {"name": "Exam", "imdb": 4.2, "category": "Thriller"},
     {"name": "We Two", "imdb": 7.2, "category": "Romance"},
 ]
-sum = 0
-for x in movies:
-    sum += x["imdb"]
-avg = sum / len(movies)
+def summ(movies):
+    suml = 0
+    for x in movies:
+        suml += x["imdb"]
+    return suml
+s = summ(movies)
+avg = s / len(movies)
 print(avg)
