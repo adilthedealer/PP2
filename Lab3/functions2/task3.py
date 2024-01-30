@@ -15,10 +15,13 @@ movies = [
     {"name": "Exam", "imdb": 4.2, "category": "Thriller"},
     {"name": "We Two", "imdb": 7.2, "category": "Romance"},
 ]
+def catlist(movies, s):
+    mylist = list()
+    for x in movies:
+        if x["category"] == s:
+            mylist.append(x["name"])
+    return mylist
 s = input()
-mylist = list()
-for x in movies:
-    if x["category"] == s:
-        mylist.append(x["name"])
-for x in mylist:
+mlst = catlist(movies, s)
+for x in mlst:
     print(x)
