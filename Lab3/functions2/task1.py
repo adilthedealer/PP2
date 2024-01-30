@@ -15,15 +15,17 @@ movies = [
     {"name": "Exam", "imdb": 4.2, "category": "Thriller"},
     {"name": "We Two", "imdb": 7.2, "category": "Romance"},
 ]
-s = input()
-for x in movies:
-    if x["name"] == s:
-        if x["imdb"] > 5.5:
-            print(True)
-            exit()
+def imdbmeasure(movies, s):
+    for x in movies:
+        if x["name"] == s:
+            if x["imdb"] > 5.5:
+                return True            
+            else:
+                return False
         else:
-            print(False)
-            exit()
-    else:
-        continue
-print(False)
+            continue
+    return False
+s = input()
+ftx = imdbmeasure(movies, s)
+print(ftx)
+
