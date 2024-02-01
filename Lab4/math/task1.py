@@ -5,6 +5,6 @@ def deg_to_rad(degree):
     return degree * pi / 180
 
 
-degree = int(input())
+degree = int(input("Input degree"))
 rad = deg_to_rad(degree)
-print(rad)
+print("Output radian:", rad)
