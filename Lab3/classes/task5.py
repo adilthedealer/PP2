@@ -23,4 +23,9 @@ class Account:
             print(i, end=" ")
         print()
         print(self.balance)
-
+s, bal = input(), int(input())
+acc = Account(s, bal)
+wth = int(input())
+acc.withdraw(wth)
+de = int(input())
+acc.deposit(de)
