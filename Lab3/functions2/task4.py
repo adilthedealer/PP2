@@ -15,11 +15,18 @@ movies = [
     {"name": "Exam", "imdb": 4.2, "category": "Thriller"},
     {"name": "We Two", "imdb": 7.2, "category": "Romance"},
 ]
-def summ(movies):
-    suml = 0
-    for x in movies:
-        suml += x["imdb"]
-    return suml
-s = summ(movies)
-avg = s / len(movies)
+cnt = 0
+mylist = list()
+while True:
+    s = input()
+    if s == "":
+        break
+    mylist.append(s)
+    cnt += 1
+sumj = 0
+for i in range(len(mylist)):
+    for j in movies:
+        if mylist[i] == j["name"]:
+            sumj += j["imdb"]
+avg = sumj / cnt
 print(avg)
