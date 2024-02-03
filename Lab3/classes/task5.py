@@ -6,6 +6,7 @@ class Account:
     def deposit(self, dep):
         if dep > 0:
             self.balance += dep
+            print("Succesfully deposited", dep)
         else:
             print("______________")
             print("Deposit error")
@@ -13,6 +14,7 @@ class Account:
     def withdraw(self, wth):
         if wth < self.balance and wth > 0:
             self.balance -= wth
+            print("Successfully withdrew", wth)
         else:
             print("____________________")
             print("Operation is denied")
@@ -23,9 +25,9 @@ class Account:
             print(i, end=" ")
         print()
         print(self.balance)
-s, bal = input(), int(input())
+s, bal = input(), float(input())
 acc = Account(s, bal)
-wth = int(input())
+wth = float(input())
 acc.withdraw(wth)
-de = int(input())
+de = float(input())
 acc.deposit(de)
