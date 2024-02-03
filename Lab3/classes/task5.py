@@ -25,7 +25,7 @@ class Account:
             print(i, end=" ")
         print()
         print(self.balance)
-s, bal = input(), float(input())
+s, bal = input("Enter account details:"), float(input())
 acc = Account(s, bal)
 wth = float(input())
 acc.withdraw(wth)
