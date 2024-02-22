@@ -12,14 +12,11 @@ header += ("-" * 50 + ' ' + "--------------------" + ' ' + '-' * 6 + ' ' + '-' *
 output = header
 cnt = 0
 for item in data['imdata']:
-    cnt += 1
     dn = item['l1PhysIf']['attributes']['dn']
     description = item['l1PhysIf']['attributes'].get('descr', '')
     speed = item['l1PhysIf']['attributes'].get('speed', 'inherit')
     mtu = item['l1PhysIf']['attributes'].get('mtu', '')
 
     output += "\n{:<50} {:<20} {:<8} {}".format(dn, description, speed, mtu)
-    if cnt == 3:
-        break
 
 print(output)
