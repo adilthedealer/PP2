@@ -7,21 +7,21 @@ pg.init()
 font = pg.font.SysFont("Areal", 60)
 font_small = pg.font.SysFont("Verdana", True, 20)
 
-#display settings
+# display settings
 sc = pg.display.set_mode((1000, 1000))
 W, H = 1000, 1000
 pg.display.set_caption("RACER")
 clock = pg.time.Clock()
 
 
-#materials loading
+# materials loading
 bgRoad = pg.image.load("Lab9/images/bgRoad.png")
 sharkIm = pg.image.load("Lab9/images/Player.png")
-rocketIm = pg.image.load("Lab9/images/rocket.png")
-bombIm = pg.image.load("Lab9/images/bomb.png")
+rocketIm = pg.image.load("Lab9/images/rocket.jpg")
+bombIm = pg.image.load("Lab9/images/bomb.jpg")
 
 
-#settings
+# settings
 speed = 3
 game_over = font.render("Game Over", True, (0, 0, 0))
 score = 100
@@ -31,50 +31,53 @@ x = 20
 y = 20
 
 
-#class of enemy
+# class of enemy
 class Cherry(pg.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pg.image.load("Lab9/images/cherry.png")
+        self.image = pg.image.load("Lab9/images/cherry.jpg").convert_alpha()
         self.rect = self.image.get_rect()
         self.speed = 10
+
     def move(self):
         global money
         self.rect.move_ip(0, 3)
         if self.rect.top > 1100:
             self.rect.bottom = 0
-            self.rect.center = (random.randint(40, W-40), 200)
+            self.rect.center = (random.randint(40, W - 40), 200)
+
     def draw(self):
         sc.blit(self.image, self.rect)
 
 
-#class of enemy
+# class of enemy
 class Coin(pg.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.image = pg.image.load("Lab9/images/coin.png")
         self.rect = self.image.get_rect()
         self.speed = 7
+
     def move(self):
         global money
         self.rect.move_ip(0, self.speed)
         if self.rect.top > 1000:
             self.rect.bottom = 0
-            self.rect.center = (random.randint(40, W-40), 200)
+            self.rect.center = (random.randint(40, W - 40), 200)
+
     def draw(self):
         sc.blit(self.image, self.rect)
 
 
-#class of dangereous enemy
+# class of dangereous enemy
 class Enemy(pg.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.image = pg.image.load("Lab9/images/Enemy.png")
         self.rect = self.image.get_rect()
-        self.rect.center = (random.randint(40, W-40), 220)
+        self.rect.center = (random.randint(40, W - 40), 220)
 
-
-#movement settings
+    # movement settings
     def move(self):
         global score
         global index
@@ -83,17 +86,17 @@ class Enemy(pg.sprite.Sprite):
         self.rect.move_ip(0, speed)
         if self.rect.top > 1000:
             index += 1
-            score += 100 * index*0.1
+            score += 100 * index * 0.1
             self.rect.bottom = 0
             x = 20
             y = 20
-            self.rect.center = (random.randint(40, W-40), 200)
+            self.rect.center = (random.randint(40, W - 40), 200)
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
 
-#class of player
+# class of player
 class Shark(pg.sprite.Sprite):
     def __init__(self):
         super().__init__()
@@ -116,6 +119,7 @@ class Shark(pg.sprite.Sprite):
             if pressed_keys[pg.K_RIGHT]:
                 self.rect.move_ip(15, 0)
 
+
 rocket = Enemy()
 shark = Shark()
 coin = Coin()
@@ -137,15 +141,12 @@ speed_incr = pg.USEREVENT + 1
 pg.time.set_timer(speed_incr, 2000)
 
 
-
-
-
 run = True
 while True:
 
     for event in pg.event.get():
         if event.type == speed_incr:
-            speed += money/20
+            speed += money / 20
         if event.type == pg.QUIT:
             pg.quit()
             sys.exit()
@@ -154,6 +155,9 @@ while True:
     scores = font.render(str(int(score)), True, (0, 0, 0))
     sc.blit(scores, (20, 20))
     monCount = font.render(str(money), True, (255, 200, 50))
+
+    pg.mixer.music.load("Lab9/sounds/bgMusic.mp3")
+    pg.mixer.music.play()
 
     sc.blit(monCount, (800, 10))
 
@@ -172,17 +176,13 @@ while True:
     for rocket in rockets:
         if shark.rect.collidepoint(rocket.rect.center):
             sc.fill((9, 1, 1))
-            sc.blit(pg.image.load("tutu.jpg"), (00, 0))
+            sc.blit(pg.image.load("Lab9/images/tutu.jpg"), (00, 0))
             pg.mixer.music.pause()
-            pg.mixer.Sound('nokia.mp3').play()
             time.sleep(4)
-
-            
 
             pg.display.update()
             for entity in group:
                 entity.kill()
-            #time.sleep(2)
             pg.quit()
             sys.exit()
 
